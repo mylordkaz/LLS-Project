@@ -58,5 +58,9 @@ jobs:
       - name: Install PestPHP
         run: composer require pestphp/pest --dev --with-all-dependencies
 
+      - name: Install Laravel Dusk
+      run: composer require --dev laravel/dusk
+
+
       - name: Run Tests
         run: ./vendor/bin/pest
