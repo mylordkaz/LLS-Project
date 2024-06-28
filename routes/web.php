@@ -1,9 +1,19 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialAuthController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+
+// Google authentication routes
+Route::get('auth/google', [SocialAuthController::class, 'redirectToGoogle'])->name('auth.google');
+Route::get('auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
+
+// GitHub authentication routes
+Route::get('auth/github', [SocialAuthController::class, 'redirectToGitHub'])->name('auth.github');
+Route::get('auth/github/callback', [SocialAuthController::class, 'handleGitHubCallback']);
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
