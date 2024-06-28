@@ -10,12 +10,12 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
   return (
     <>
-      <Head title="Welcome" />
+      <Head title="Welcomeee" />
       <div className="bg-gray-50 text-black/50 dark:bg-black dark:text-white/50">
         <img
           id="background"
           className="absolute -left-20 top-0 max-w-[877px]"
-          src="https://laravel.com/assets/img/welcome/background.svg"
+          src=""
         />
         <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
           <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
@@ -106,19 +106,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             d="m3.55 1.893 8 4.048a1.008 1.008 0 0 0 .9 0l8-4.048a1 1 0 0 0-.9-1.785l-7.322 3.706a.506.506 0 0 1-.452 0L4.454.108a1 1 0 0 0-.9 1.785H3.55Z"
                           />
                         </svg>
-                      </div>
-
-                      <div className="pt-3 sm:pt-5 lg:pt-0">
-                        <h2 className="text-xl font-semibold text-black dark:text-white">
-                          Documentation
-                        </h2>
-
-                        <p className="mt-4 text-sm/relaxed">
-                          Laravel has wonderful documentation covering every
-                          aspect of the framework. Whether you are a newcomer or
-                          have prior experience with Laravel, we recommend
-                          reading our documentation from beginning to end.
-                        </p>
                       </div>
                     </div>
 
