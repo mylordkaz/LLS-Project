@@ -21,6 +21,8 @@ class User extends AuthUser
         'name',
         'email',
         'password',
+        'google_id',
+        'github_id'
     ];
 
     /**
