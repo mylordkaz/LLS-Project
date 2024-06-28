@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
@@ -26,14 +25,22 @@ class SocialAuthController extends Controller
     public function handleGoogleCallback()
     {
         $googleUser = Socialite::driver('google')->user();
-        $user = User::updateOrCreate(
-            ['email' => $googleUser->getName()],
-            [
-                'name' => $googleUser->getName(),
-                'password' => Hash::make(uniqid()), // create random
-                'google_id' => $googleUser->getId()
-            ]
-        );
+
+        $user = User::where('email', $googleUser->getEmail())->first();
+
+        if($user) {
+            $user->update(['google_id' => $googleUser->getId()]);
+        } else {
+            $user = User::create(
+                [
+                    'name' => $googleUser->getName(),
+                    'email' => $googleUser->getName(),
+                    'password' => Hash::make(uniqid()), // create random
+                    'google_id' => $googleUser->getId()
+                ]
+            );
+        }
+
 
         Auth::login($user);
 
@@ -45,14 +52,20 @@ class SocialAuthController extends Controller
     {
         $githubUser = Socialite::driver('github')->user();
 
-        $user = User::updateOrCreate(
-            ['email' => $githubUser->getName()],
-            [
-                'name' => $githubUser->getName(),
-                'password' => Hash::make(uniqid()), // create random
-                'github_id' => $githubUser->getId()
-            ]
-        );
+        $user = User::where('email', $githubUser->getEmail())->first();
+
+        if($user) {
+            $user->update(['google_id' => $githubUser->getId()]);
+        } else {
+            $user = User::create(
+                [
+                    'name' => $githubUser->getName(),
+                    'email' => $githubUser->getName(),
+                    'password' => Hash::make(uniqid()), // create random
+                    'google_id' => $githubUser->getId()
+                ]
+            );
+        }
         Auth::login($user);
 
         return redirect()->intended('dashboard');
